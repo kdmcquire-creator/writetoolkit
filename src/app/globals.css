@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .tool-card {
+    @apply bg-white border border-border rounded-xl p-5 hover:shadow-md hover:border-brand/30 transition-all duration-200 cursor-pointer;
+  }
+}

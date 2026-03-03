@@ -22,18 +22,33 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang=\"en\">
+    <html lang="en">
       <head>
-        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <script
-          type=\"application/ld+json\"
-          dangerouslySetInnerHTML={{\n            __html: JSON.stringify({\n              '@context': 'https://schema.org',\n              '@type': 'WebSite',\n              name: 'WriteToolkit',\n              url: 'https://writetoolkit.com',\n              description: 'Free online tools for writers, marketers, and business owners.',\n            }),\n          }}\n        />
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'WriteToolkit',
+              url: 'https://writetoolkit.com',
+              description: 'Free online tools for writers, marketers, and business owners.',
+            }),
+          }}
+        />
       </head>
       <body className={`${inter.className} bg-white text-navy antialiased`}>
         <Header />
-        <main className=\"min-h-screen\">{children}</main>\n        <Footer />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
-  )\n}
+  )
+}

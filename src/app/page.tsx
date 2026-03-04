@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import ToolRenderer from '@/components/ToolRenderer';
+
+export const metadata: Metadata = {
+  title: 'WriteToolkit | Free Online Writing and SEO Tools',
+  description: 'A professional writing toolkit with free tools for word counting, character counting, AI detection, grammar checking, and more.',
+  alternates: {
+    canonical: 'https://writetoolkit.com',
+  },
+};
 
 export default function Home() {
   return (

@@ -34,7 +34,10 @@ const TOOLS: Tool[] = [
   { name: 'ROI Calculator', description: 'Calculate return on investment.', href: '/tools/roi-calculator' },
   
   { name: 'Salary Converter', description: 'Convert between hourly and annual pay.', href: '/tools/salary-hourly-converter' },
+
   
+
+
   { name: 'Lorem Ipsum', description: 'Generate custom placeholder text.', href: '/tools/lorem-ipsum-generator' },
   
   { name: 'Password Generator', description: 'Create strong, secure passwords.', href: '/tools/password-generator' },

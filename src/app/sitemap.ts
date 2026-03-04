@@ -1,14 +1,23 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://writetoolkit-wtt2.vercel.app';
-  
+
   const tools = [
     'word-counter',
     'ai-detector',
     'grammar-checker',
     'case-converter',
     'invoice-generator',
+    'reading-time',
+    'roi-calculator',
+    'salary-hourly-converter',
+    'lorem-ipsum-generator',
+    'password-generator',
+    'hashtag-generator',
+    'resume-scorer',
+    'headline-analyzer',
+    'markdown-to-html',
   ];
 
   const toolUrls = tools.map((tool) => ({

@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const tools = [
     'word-counter',
+    'character-counter',
     'ai-detector',
     'grammar-checker',
     'case-converter',

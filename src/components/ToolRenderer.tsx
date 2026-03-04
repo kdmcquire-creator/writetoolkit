@@ -1,6 +1,3 @@
-aria-label={
-  
-
   
 import Link from 'next/link';
 

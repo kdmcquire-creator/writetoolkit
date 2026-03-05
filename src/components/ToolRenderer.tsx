@@ -11,6 +11,42 @@ import Link from 'next/link';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 type Tool = {
   
   name: string;
@@ -20,6 +56,42 @@ type Tool = {
   href: string;
   
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,3 +121,4 @@ const TOOLS: Tool[] = [
   { name: 'Reading Time', description: 'Estimate reading and speaking time.', href: '/tools/reading-time' },
   
   { name: 'ROI Calculator', description: 'Calculate return on investment.', href: '/tools/roi-calculator' },
+

@@ -4,7 +4,9 @@ import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
+
 const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata: Metadata = {
   title: {
@@ -12,15 +14,17 @@ export const metadata: Metadata = {
     template: '%s | WriteToolkit',
   },
   description: 'Free online tools for writers, marketers, and business owners. Word counter, AI detector, grammar checker, invoice generator, ROI calculator, and 13 more — no login required.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://writetoolkit.com'),
+  metadataBase: new URL('https://writetoolkit-wtt2.vercel.app'),
   openGraph: {
     siteName: 'WriteToolkit',
     type: 'website',
     locale: 'en_US',
   },
   twitter: { card: 'summary_large_image' },
+  alternates: { canonical: '/' },
   robots: { index: true, follow: true },
 }
+
 
 export default function RootLayout({
   children,
@@ -34,21 +38,3 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'WriteToolkit',
-              url: 'https://writetoolkit.com',
-              description: 'Free online tools for writers, marketers, and business owners.',
-            }),
-          }}
-        />
-      </head>
-      <body className={`${inter.className} bg-white text-navy antialiased`}>
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-      </body>
-    </html>
-  )
-}

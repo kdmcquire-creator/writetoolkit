@@ -1,11 +1,14 @@
+import AffiliateBlock from '@/components/AffiliateBlock';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { tools } from '@/lib/tools';
+
 
 export const metadata: Metadata = {
   title: 'Writing Tools | WriteToolkit',
   description: 'Free online writing utilities including word counters, grammar checkers, and more to improve your writing process.',
 };
+
 
 export default function ToolsPage() {
   return (
@@ -17,6 +20,7 @@ export default function ToolsPage() {
             Boost your productivity with our suite of free writing utilities. From counting words to generating resumes, we have everything you need to perfect your content.
           </p>
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {tools.map((tool) => (
@@ -31,43 +35,7 @@ export default function ToolsPage() {
           ))}
         </div>
 
+
         <div className="prose prose-blue max-w-none bg-white p-8 rounded-lg border border-gray-200">
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Why Use WriteToolkit Tools?</h2>
-            <p className="text-gray-700">
-              Our tools are designed for writers, editors, and students who need quick, reliable results without the bloat of complex software. Whether you are using our{' '}
-              <Link href="/tools/word-counter" className="text-blue-600 hover:underline">Word Counter</Link> or{' '}
-              <Link href="/tools/grammar-checker" className="text-blue-600 hover:underline">Grammar Checker</Link>, you get professional-grade utility for free.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">How to Use Our Tools</h2>
-            <p className="text-gray-700 mb-4">
-              Using our tools is simple. Select a tool from the grid above, paste your text into the input area, and get instant results. For example, our{' '}
-              <Link href="/tools/headline-analyzer" className="text-blue-600 hover:underline">Headline Analyzer</Link> provides immediate feedback on your titles.
-            </p>
-            <p className="text-gray-700">
-              For more information on how we handle your data, please visit our{' '}
-              <Link href="/disclosure" className="text-blue-600 hover:underline">disclosure page</Link>.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold">Are these tools free?</h3>
-                <p className="text-gray-600">Yes, all tools on WriteToolkit are 100% free to use.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">Do I need an account?</h3>
-                <p className="text-gray-600">No registration is required. You can start using any tool immediately.</p>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-  );
-}

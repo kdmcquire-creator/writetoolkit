@@ -53,7 +53,7 @@ export default function ToolsPage() {
               href={`/tools/${slug}`}
               className="text-blue-600 hover:underline capitalize"
             >
-              {slug.replace(/-/g, ' ')}
+{slug.replace(/-/g, ' ')})}
             </Link>
           ))}
         </div>

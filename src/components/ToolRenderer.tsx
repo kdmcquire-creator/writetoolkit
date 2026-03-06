@@ -1,10 +1,13 @@
+import AffiliateBlock from '@/components/AffiliateBlock';
 import Link from 'next/link';
+
 
 type Tool = {
   name: string;
   description: string;
   href: string;
 };
+
 
 const TOOLS: Tool[] = [
   { name: 'Word Counter', description: 'Count words, characters, and reading time.', href: '/tools/word-counter' },
@@ -16,6 +19,7 @@ const TOOLS: Tool[] = [
   { name: 'Reading Time', description: 'Estimate reading and speaking time.', href: '/tools/reading-time' },
   { name: 'ROI Calculator', description: 'Calculate return on investment.', href: '/tools/roi-calculator' },
 ];
+
 
 export default function ToolRenderer() {
   return (
@@ -32,9 +36,6 @@ export default function ToolRenderer() {
           </h2>
           <p className="font-normal text-gray-700">
             {tool.description}
+      <AffiliateBlock placement="toolPage" toolSlug={(undefined as any)?.slug} />
           </p>
         </Link>
-      ))}
-    </div>
-  );
-}

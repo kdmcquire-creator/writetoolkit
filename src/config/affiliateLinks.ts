@@ -1,1 +1,17 @@
-// redeploy trigger (no functional change)\nexport type AffiliatePlacement = 'toolsIndex' | 'toolPage';\n\nexport interface AffiliateOffer {\n  id: string;\n  name: string;\n  url: string;\n  cta: string;\n  disclosure?: string;\n  tags?: string[];\n}\n\n// Add real tracking URLs here later\nexport const affiliateOffers: Record<string, AffiliateOffer> = {\n  nord: {\n    id: 'nord',\n    name: 'NordVPN',\n    url: '#', // TODO: Replace with real tracking link\n    cta: 'Get NordVPN',\n    disclosure: 'We may earn a commission if you sign up through this link.',\n    tags: ['security', 'privacy']\n  },\n  saily: {\n    id: 'saily',\n    name: 'Saily',\n    url: '#', // TODO: Replace with real tracking link\n    cta: 'Get Saily eSIM',\n    disclosure: 'We may earn a commission if you sign up through this link.',\n    tags: ['travel', 'data']\n  }\n};\n\nexport const affiliatePlacements: Record<AffiliatePlacement, string[]> = {\n  toolsIndex: ['nord', 'saily'],\n  toolPage: ['nord', 'saily']\n};\n\nexport function getAffiliateOffers({ placement, toolSlug }: { placement: AffiliatePlacement; toolSlug?: string }): AffiliateOffer[] {\n  const ids = affiliatePlacements[placement] || [];\n  // Future-proof: tool-specific overrides can be implemented here\n  return ids.map(id => affiliateOffers[id]).filter(Boolean);\n}\n
+// redeploy trigger 2 - 2026-03-06
+export const affiliateLinks = [
+  {
+    name: 'Anyword',
+    url: 'https://anyword.com/?fpr=shane74',
+    description: 'Anyword is an AI writing platform that helps you create high-performing copy for your marketing channels.',
+    cta: 'Try Anyword for Free',
+    logo: '/images/affiliates/anyword.png'
+  },
+  {
+    name: 'Writesonic',
+    url: 'https://writesonic.com/?via=shane-mitchell',
+    description: 'Writesonic is an AI writing and image generation platform that helps you create high-quality content in seconds.',
+    cta: 'Get Started with Writesonic',
+    logo: '/images/affiliates/writesonic.png'
+  }
+];

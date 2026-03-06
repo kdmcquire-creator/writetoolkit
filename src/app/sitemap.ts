@@ -1,9 +1,11 @@
 import type { MetadataRoute } from 'next';
-import { tools } from '@/lib/tools';
+import { tools } from '../lib/tools';
+
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL 
     || (process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'https://writetoolkit-wtt2.vercel.app');
+
 
   const toolUrls = tools.map((tool) => ({
     url: baseUrl + '/tools/' + tool.slug,
@@ -11,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
+
 
   return [
     {
@@ -28,3 +31,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolUrls,
   ];
 }
+

@@ -1,1 +1,20 @@
-import Link from 'next/link';\n\nexport default function DisclosurePage() {\n  return (\n    <main className=\"container mx-auto px-4 py-12 max-w-4xl\">\n      <h1 className=\"text-4xl font-bold mb-8\">Affiliate Disclosure</h1>\n      \n      <div className=\"space-y-6 text-lg text-gray-700\">\n        <p>\n          Some of the links on this website are affiliate links, which means that we may earn a commission if you click on the link or make a purchase using the link. When you make a purchase, the price you pay will be the same whether you use the affiliate link or go directly to the vendor's website using a non-affiliate link.\n        </p>\n        \n        <p>\n          By using the affiliate links, you are helping support this website, and we genuinely appreciate your support. There is no extra cost to you. Please note that the opinions expressed here are our own and are not official statements of the affiliate programs.\n        </p>\n\n        <div className=\"pt-8\">\n          <Link href=\"/tools\" className=\"text-blue-600 hover:underline font-medium\">\n            &larr; Back to Tools\n          </Link>\n        </div>\n      </div>\n    </main>\n  );\n}\n
+import Link from 'next/link';
+
+export default function DisclosurePage() {
+  return (
+    <main className="container mx-auto px-4 py-12 max-w-4xl">
+      <h1 className="text-4xl font-bold mb-8">Affiliate Disclosure</h1>
+      <div className="space-y-4 text-lg text-gray-700">
+        <p>
+          Some of the links on this website are affiliate links, which means we may earn a commission if you click on the link or make a purchase using the link.
+        </p>
+        <p>
+          This comes at no additional cost to you. Our opinions are our own and we only recommend products or services we believe will add value to our readers.
+        </p>
+        <Link href="/tools" className="text-blue-600 hover:underline inline-block mt-4">
+          &larr; Back to Tools
+        </Link>
+      </div>
+    </main>
+  );
+}

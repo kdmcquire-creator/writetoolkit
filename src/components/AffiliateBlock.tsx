@@ -1,19 +1,34 @@
 'use client';
 
+
+
+
 import React from 'react';
-import getAffiliateOffers, { AffiliatePlacement } from '../config/affiliateLinks';
+import { getAffiliateOffers, AffiliatePlacement } from '../config/affiliateLinks';
+
+
+
 
 interface AffiliateBlockProps {
   placement: AffiliatePlacement;
   toolSlug?: string;
 }
 
+
+
+
 const AffiliateBlock: React.FC<AffiliateBlockProps> = ({ placement, toolSlug }) => {
   const offers = getAffiliateOffers(placement, toolSlug);
+
+
+
 
   if (!offers || offers.length === 0) {
     return null;
   }
+
+
+
 
   return (
     <div className="my-8 p-6 bg-blue-50 rounded-xl border border-blue-100">
@@ -34,16 +49,3 @@ const AffiliateBlock: React.FC<AffiliateBlockProps> = ({ placement, toolSlug }) 
               className="inline-block mt-3 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
             >
               {offer.cta}
-            </a>
-          </div>
-        ))}
-      </div>
-      
-      <p className="text-[10px] text-gray-400 mt-4 italic">
-        Disclosure: This section contains affiliate links. If you click and make a purchase, we may receive a small commission at no extra cost to you.
-      </p>
-    </div>
-  );
-};
-
-export default AffiliateBlock;

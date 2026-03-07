@@ -1,1 +1,49 @@
-'use client';\n\nimport React from 'react';\nimport { getAffiliateOffers, AffiliatePlacement } from '../config/affiliateLinks';\n\ninterface AffiliateBlockProps {\n  placement: AffiliatePlacement;\n  toolSlug?: string;\n}\n\nconst AffiliateBlock: React.FC<AffiliateBlockProps> = ({ placement, toolSlug }) => {\n  const offers = getAffiliateOffers({ placement, toolSlug });\n\n  if (!offers || offers.length === 0) return null;\n\n  return (\n    <div className=\"my-8 p-6 border rounded-lg bg-gray-50 dark:bg-gray-900\">\n      <h2 className=\"text-xl font-bold mb-2\">Recommended</h2>\n      <p className=\"text-sm text-gray-600 dark:text-gray-400 mb-4\">\n        We may earn a commission when you click on links to our partners. This helps support our site at no extra cost to you.\n      </p>\n      <div className=\"space-y-4\">\n        {offers.map((offer) => (\n          <div key={offer.id} className=\"flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-white dark:bg-gray-800 border rounded-md shadow-sm\">\n            <div>\n              <h3 className=\"font-semibold text-lg\">{offer.name}</h3>\n              {offer.disclosure && <p className=\"text-xs italic text-gray-500\">{offer.disclosure}</p>}\n            </div>\n            <a\n              href={offer.url}\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n              className=\"mt-3 sm:mt-0 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors\"\n            >\n              {offer.cta}\n            </a>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n};\n\nexport default AffiliateBlock;
+'use client';
+
+import React from 'react';
+import getAffiliateOffers, { AffiliatePlacement } from '../config/affiliateLinks';
+
+interface AffiliateBlockProps {
+  placement: AffiliatePlacement;
+  toolSlug?: string;
+}
+
+const AffiliateBlock: React.FC<AffiliateBlockProps> = ({ placement, toolSlug }) => {
+  const offers = getAffiliateOffers(placement, toolSlug);
+
+  if (!offers || offers.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="my-8 p-6 bg-blue-50 rounded-xl border border-blue-100">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold text-blue-900">Recommended</h3>
+        <span className="text-xs text-blue-600 font-medium px-2 py-1 bg-blue-100 rounded">Partner Offer</span>
+      </div>
+      
+      <div className="grid gap-4">
+        {offers.map((offer, index) => (
+          <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-blue-100">
+            <h4 className="font-bold text-gray-900">{offer.name}</h4>
+            <p className="text-sm text-gray-600 mt-1">{offer.description}</p>
+            <a 
+              href={offer.url} 
+              target="_blank" 
+              rel="noopener noreferrer nofollow"
+              className="inline-block mt-3 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              {offer.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+      
+      <p className="text-[10px] text-gray-400 mt-4 italic">
+        Disclosure: This section contains affiliate links. If you click and make a purchase, we may receive a small commission at no extra cost to you.
+      </p>
+    </div>
+  );
+};
+
+export default AffiliateBlock;

@@ -1,12 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
-
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +23,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-
 export default function RootLayout({
   children,
 }: {
@@ -33,8 +30,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
+      <body className={inter.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  )
+}

@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'WriteToolkit',
   description: 'A professional writing toolkit',
+  metadataBase: new URL('https://writetoolkit-wtt2.vercel.app'),
+  alternates: { canonical: '/' },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({

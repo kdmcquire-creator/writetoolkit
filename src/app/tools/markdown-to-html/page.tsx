@@ -13,18 +13,21 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Tools', href: '/tools' },
-          { label: 'Markdown to HTML', href: '/tools/markdown-to-html' },
-        ]}
-      />
-      <div className="mt-8">
-        <MarkdownToHtmlClient />
+    <>
+      <div className="container mx-auto px-4 py-8">
+        <Breadcrumbs
+          items={[
+            { href: '/', label: 'Home' },
+            { href: '/tools', label: 'Tools' },
+            { href: '/tools/markdown-to-html', label: 'Markdown to HTML' },
+          ]}
+        />
+        <div className="mt-8">
+          <MarkdownToHtmlClient />
+        </div>
       </div>
+
       <AffiliateBlock placement="toolPage" />
-    </div>
+    </>
   );
 }

@@ -1,4 +1,5 @@
-export type AffiliatePlacement = 'tool-sidebar' | 'tool-bottom' | 'tools-list' | 'toolsIndex';
+export type AffiliatePlacement = 'tool-sidebar' | 'tool-bottom' | 'tools-list' | 'toolsIndex' | 'toolPage';
+
 
 export const affiliateLinks = [
   {
@@ -20,6 +21,7 @@ export const affiliateLinks = [
     disclosure: 'Affiliate partner'
   }
 ];
+
 
 export function getAffiliateOffers({ placement, toolSlug }: { placement: AffiliatePlacement; toolSlug?: string }) {
   return affiliateLinks;

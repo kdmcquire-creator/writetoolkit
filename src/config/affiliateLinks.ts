@@ -1,4 +1,4 @@
-export type AffiliatePlacement = 'tool-sidebar' | 'tool-bottom' | 'tools-list';
+export type AffiliatePlacement = 'tool-sidebar' | 'tool-bottom' | 'tools-list' | 'toolsIndex';
 
 export const affiliateLinks = [
   {

@@ -1,11 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { tools } from '@/lib/tools';
 
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL 
-    || (process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'https://tools.aiproductivityhub.co');
-
+  const baseUrl = 'https://tools.aiproductivityhub.co';
 
   const toolUrls = tools.map((tool) => ({
     url: `${baseUrl}/tools/${tool.slug}`,
@@ -13,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
-
 
   return [
     {

@@ -1,11 +1,7 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-    ? process.env.NEXT_PUBLIC_SITE_URL
-    : process.env.VERCEL_URL
-    ? 'https://' + process.env.VERCEL_URL
-    : 'https://tools.aiproductivityhub.co';
+  const baseUrl = 'https://tools.aiproductivityhub.co';
 
   return {
     rules: {
@@ -13,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: baseUrl + '/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

@@ -1,7 +1,9 @@
 import type { MetadataRoute } from 'next';
 
+
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://writetoolkit-wtt2.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tools.aiproductivityhub.co';
+
 
   return {
     rules: {

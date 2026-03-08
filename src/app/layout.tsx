@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
-
 const inter = Inter({ subsets: ['latin'] })
-
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-
 export default function RootLayout({
   children,
 }: {
@@ -33,7 +31,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y6MJEYE1VZ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Y6MJEYE1VZ');
+          `}
+        </Script>
+      </head>
       <body className={inter.className}>
         <Header />
         {children}
         <Footer />
+      </body>
+    </html>
+  )
+}

@@ -2,15 +2,18 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
+
 const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata: Metadata = {
   title: 'WriteToolkit',
   description: 'A professional writing toolkit',
-  metadataBase: new URL('https://writetoolkit-wtt2.vercel.app'),
+  metadataBase: new URL('https://tools.aiproductivityhub.co'),
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },
 }
+
 
 export default function RootLayout({
   children,

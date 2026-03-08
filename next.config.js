@@ -2,6 +2,7 @@
 const nextConfig = {
   async redirects() {
     return [
+      { source: '/', destination: '/tools', permanent: true },
       { source: '/word-counter', destination: '/tools/word-counter', permanent: true },
       { source: '/character-counter', destination: '/tools/character-counter', permanent: true },
       { source: '/ai-detector', destination: '/tools/ai-detector', permanent: true },
@@ -20,5 +21,6 @@ const nextConfig = {
     ];
   },
 };
+
 
 module.exports = nextConfig;

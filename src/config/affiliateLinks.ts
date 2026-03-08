@@ -19,6 +19,15 @@ export const affiliateLinks = [
     cta: 'Get Started with Writesonic',
     logo: '/images/affiliates/writesonic.png',
     disclosure: 'Affiliate partner'
+  },
+  {
+    id: 'nordprotect',
+    name: 'NordProtect',
+    url: 'https://go.nordprotect.net/aff_c?offer_id=973&aff_id=142338',
+    description: 'NordProtect provides comprehensive identity theft protection and credit monitoring services to keep your personal data safe.',
+    cta: 'Get NordProtect',
+    logo: '/images/affiliates/nordprotect.png',
+    disclosure: 'Affiliate partner'
   }
 ];
 
@@ -26,3 +35,4 @@ export const affiliateLinks = [
 export function getAffiliateOffers({ placement, toolSlug }: { placement: AffiliatePlacement; toolSlug?: string }) {
   return affiliateLinks;
 }
+

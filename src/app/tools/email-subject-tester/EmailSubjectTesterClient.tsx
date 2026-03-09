@@ -10,7 +10,7 @@ export default function EmailSubjectTesterClient() {
     const len = subject.length;
     if (len >= 30 && len <= 60) s += 20;
     else if (len > 0 && len < 30) s += 10;
-    if (/d/.test(subject)) s += 10;
+    if (/\d/.test(subject)) s += 10;
     const powerWords = ['free','exclusive','urgent','now','today','limited','secret','proven','new','you','save','win','get','discover'];
     if (powerWords.some(w => subject.toLowerCase().includes(w))) s += 15;
     if (subject !== subject.toUpperCase()) s += 10;
@@ -29,7 +29,7 @@ export default function EmailSubjectTesterClient() {
     if (!subject.trim()) return t;
     if (subject.length < 30) t.push('Too short — aim for 30-60 characters');
     if (subject.length > 60) t.push('Too long — try to keep under 60 characters');
-    if (!/d/.test(subject)) t.push('Add a number to boost open rates (e.g. "5 ways to...")');
+    if (!/\d/.test(subject)) t.push('Add a number to boost open rates (e.g. "5 ways to...")');
     const powerWords = ['free','exclusive','urgent','now','today','limited','secret','proven','new','you','save','win','get','discover'];
     if (!powerWords.some(w => subject.toLowerCase().includes(w))) t.push('Include a power word like "free", "exclusive", or "proven"');
     if (subject === subject.toUpperCase()) t.push('Avoid ALL CAPS — it reads as shouting and triggers spam filters');

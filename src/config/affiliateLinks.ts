@@ -1,8 +1,5 @@
 export type AffiliatePlacement = 'tool-sidebar' | 'tool-bottom' | 'tools-list' | 'toolsIndex' | 'toolPage';
 
-
-
-
 export const affiliateLinks = [
   {
     id: 'anyword',
@@ -51,8 +48,6 @@ export const affiliateLinks = [
   }
 ];
 
-
-
-
 export function getAffiliateOffers({ placement, toolSlug }: { placement: AffiliatePlacement; toolSlug?: string }) {
   return affiliateLinks;
+}

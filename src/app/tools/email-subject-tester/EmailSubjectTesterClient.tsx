@@ -8,16 +8,31 @@ export default function EmailSubjectTesterClient() {
     if (!subject.trim()) return 0;
     let s = 0;
     const len = subject.length;
+    
+    // Length score
     if (len >= 30 && len <= 60) s += 20;
     else if (len > 0 && len < 30) s += 10;
+    
+    // Number check
     if (/\d/.test(subject)) s += 10;
+    
+    // Power words
     const powerWords = ['free','exclusive','urgent','now','today','limited','secret','proven','new','you','save','win','get','discover'];
     if (powerWords.some(w => subject.toLowerCase().includes(w))) s += 15;
+    
+    // Case check
     if (subject !== subject.toUpperCase()) s += 10;
-    if (/[|]|{|}|%[A-Z]/.test(subject) || /[\u{1F300}-\u{1FFFF}]/u.test(subject)) s += 10;
+    
+    // Symbol/Emoji check (Simplified to avoid ES6 unicode flag build issues)
+    if (/[|]|{|}|%[A-Z]/.test(subject) || /[^\x00-\x7F]/.test(subject)) s += 10;
+    
+    // Spam words
     const spamWords = ['buy now','click here','guaranteed','winner','cash','free money','act now'];
     if (!spamWords.some(w => subject.toLowerCase().includes(w))) s += 10;
+    
+    // Short & Sweet bonus
     if (len <= 50) s += 5;
+    
     return Math.min(s, 100);
   };
 

@@ -16,6 +16,12 @@ const TOOLS: Tool[] = [
   { name: 'Reading Time', description: 'Estimate reading and speaking time.', href: '/tools/reading-time' },
   { name: 'ROI Calculator', description: 'Calculate return on investment.', href: '/tools/roi-calculator' },
   { name: 'Character Counter', description: 'Count characters, spaces, and paragraphs.', href: '/tools/character-counter' },
+  { name: 'Loan Calculator', description: 'Calculate monthly loan payments and total interest.', href: '/tools/loan-calculator' },
+  { name: 'QR Code Generator', description: 'Generate free QR codes for any URL or text.', href: '/tools/qr-code-generator' },
+  { name: 'Keyword Density Checker', description: 'Analyze keyword frequency and density in your content.', href: '/tools/keyword-density-checker' },
+  { name: 'Break-Even Calculator', description: 'Calculate the break-even point for your business or product.', href: '/tools/break-even-calculator' },
+  { name: 'Meta Tag Previewer', description: 'Preview how your page title and meta description appear in Google search results.', href: '/tools/meta-tag-previewer' },
+  { name: 'Email Subject Tester', description: 'Score your email subject line for open rate potential.', href: '/tools/email-subject-tester' },
 ];
 
 export default function ToolRenderer() {

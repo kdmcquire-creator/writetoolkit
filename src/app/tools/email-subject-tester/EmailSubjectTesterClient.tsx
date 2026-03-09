@@ -1,132 +1,84 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function EmailSubjectTesterClient() {
   const [subject, setSubject] = useState('');
-  const [score, setScore] = useState(0);
-  const [tips, setTips] = useState<string[]>([]);
 
-  useEffect(() => {
+  const score = () => {
+    if (!subject.trim()) return 0;
     let s = 0;
-    const t = [];
-    const val = subject.trim();
-    
-    if (val.length === 0) {
-      setScore(0);
-      setTips([]);
-      return;
-    }
-
-    // Length check
-    if (val.length >= 40 && val.length <= 60) {
-      s += 20;
-    } else if (val.length < 40) {
-      t.push('Consider making it slightly longer (40-60 chars is ideal).');
-    } else {
-      t.push('Subject is a bit long; it might get cut off on mobile devices.');
-    }
-
-    // Numbers check
-    if (/\d/.test(val)) {
-      s += 10;
-    } else {
-      t.push('Adding a number can increase open rates (e.g., "5 Tips...").');
-    }
-
-    // Power words check
-    const powerWords = ["free", "exclusive", "urgent", "now", "today", "limited", "secret", "new", "proven"];
-    if (powerWords.some(word => val.toLowerCase().includes(word))) {
-      s += 15;
-    } else {
-      t.push('Use power words like "free", "exclusive", or "urgent" to grab attention.');
-    }
-
-    // All caps check
-    if (val === val.toUpperCase() && val.length > 5) {
-      t.push('Avoid using ALL CAPS; it can look like spam.');
-    } else {
-      s += 10;
-    }
-
-    // Personalization/Emoji check
-    if (val.includes('[NAME]') || val.includes('{{') || /[\uD800-\uDBFF][\uDC00-\uDFFF]/.test(val)) {
-      s += 10;
-    } else {
-      t.push('Try adding a personalization token like [NAME] or an emoji.');
-    }
-
-    // Spam words check
-    const spamWords = ["buy now", "click here", "guaranteed", "earn money", "cash"];
-    if (spamWords.some(word => val.toLowerCase().includes(word))) {
-      t.push('Avoid common spam triggers like "buy now" or "guaranteed".');
-    } else {
-      s += 10;
-    }
-
-    // Mobile bonus
-    if (val.length < 50) {
-      s += 5;
-    }
-
-    setScore(Math.min(s + 30, 100)); // Base score of 30 for just having a subject
-    setTips(t);
-  }, [subject]);
-
-  const getScoreColor = () => {
-    if (score < 40) return 'bg-red-500';
-    if (score < 70) return 'bg-yellow-500';
-    return 'bg-green-500';
+    const len = subject.length;
+    if (len >= 30 && len <= 60) s += 20;
+    else if (len > 0 && len < 30) s += 10;
+    if (/d/.test(subject)) s += 10;
+    const powerWords = ['free','exclusive','urgent','now','today','limited','secret','proven','new','you','save','win','get','discover'];
+    if (powerWords.some(w => subject.toLowerCase().includes(w))) s += 15;
+    if (subject !== subject.toUpperCase()) s += 10;
+    if (/[|]|{|}|%[A-Z]/.test(subject) || /[\u{1F300}-\u{1FFFF}]/u.test(subject)) s += 10;
+    const spamWords = ['buy now','click here','guaranteed','winner','cash','free money','act now'];
+    if (!spamWords.some(w => subject.toLowerCase().includes(w))) s += 10;
+    if (len <= 50) s += 5;
+    return Math.min(s, 100);
   };
 
+  const getColor = (s: number) => s >= 70 ? 'bg-green-500' : s >= 40 ? 'bg-yellow-400' : 'bg-red-500';
+  const getLabel = (s: number) => s >= 70 ? 'Great' : s >= 40 ? 'Needs Work' : 'Poor';
+
+  const tips = () => {
+    const t: string[] = [];
+    if (!subject.trim()) return t;
+    if (subject.length < 30) t.push('Too short — aim for 30-60 characters');
+    if (subject.length > 60) t.push('Too long — try to keep under 60 characters');
+    if (!/d/.test(subject)) t.push('Add a number to boost open rates (e.g. "5 ways to...")');
+    const powerWords = ['free','exclusive','urgent','now','today','limited','secret','proven','new','you','save','win','get','discover'];
+    if (!powerWords.some(w => subject.toLowerCase().includes(w))) t.push('Include a power word like "free", "exclusive", or "proven"');
+    if (subject === subject.toUpperCase()) t.push('Avoid ALL CAPS — it reads as shouting and triggers spam filters');
+    return t;
+  };
+
+  const s = score();
+
   return (
-    <div className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-2">Email Subject Tester</h1>
-      <p className="text-gray-600 mb-8">Score your email subject line based on best practices for open rates.</p>
-      
-      <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Subject Line</label>
-          <input 
-            type="text" 
-            value={subject} 
-            onChange={e => setSubject(e.target.value)} 
-            placeholder="e.g. [NAME], check out this exclusive offer!" 
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-          />
-        </div>
-
-        {subject && (
-          <div className="space-y-4">
-            <div>
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-sm font-semibold text-gray-700">Subject Score</span>
-                <span className="text-lg font-bold">{score}/100</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2.5">
-                <div className={`h-2.5 rounded-full transition-all duration-500 ${getScoreColor()}`} style={{ width: `${score}%` }}></div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h3 className="text-sm font-semibold text-gray-700 mb-2">Suggestions to improve:</h3>
-              <ul className="text-sm text-gray-600 space-y-1">
-                {tips.length > 0 ? tips.map((tip, i) => (
-                  <li key={i} className="flex items-start">
-                    <span className="mr-2 text-blue-500">•</span>
-                    {tip}
+    <div className="max-w-2xl mx-auto py-12 px-4">
+      <h1 className="text-3xl font-bold mb-2">Email Subject Line Tester</h1>
+      <p className="text-gray-600 mb-8">Score your subject line and get tips to improve open rates.</p>
+      <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <label className="block text-sm font-medium text-gray-700 mb-2">Subject Line</label>
+        <input
+          type="text"
+          value={subject}
+          onChange={e => setSubject(e.target.value)}
+          placeholder="e.g. 5 free tools to grow your business today"
+          className="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <div className="mt-2 text-right text-xs text-gray-400">{subject.length} characters</div>
+      </div>
+      {subject.trim() && (
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-gray-700">Score: {s}/100</span>
+            <span className={`text-sm font-bold px-3 py-1 rounded-full text-white ${getColor(s)}`}>{getLabel(s)}</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-3">
+            <div className={`h-3 rounded-full transition-all ${getColor(s)}`} style={{ width: `${s}%` }} />
+          </div>
+          {tips().length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-base font-semibold mb-3">Tips to improve:</h3>
+              <ul className="space-y-2">
+                {tips().map((tip, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                    <span className="text-yellow-500 mt-0.5">⚠</span>{tip}
                   </li>
-                )) : (
-                  <li className="text-green-600 font-medium">Your subject line looks great!</li>
-                )}
+                ))}
               </ul>
             </div>
-          </div>
-        )}
-      </div>
-
+          )}
+        </div>
+      )}
       <div className="mt-10 text-gray-600">
-        <h3 className="text-xl font-semibold mb-2">Why subject lines matter?</h3>
-        <p>Your subject line is the most important factor in whether your email gets opened. Testing and optimizing them can lead to significant increases in engagement and conversions.</p>
+        <h3 className="text-xl font-semibold mb-2">What makes a good subject line?</h3>
+        <p>The best email subject lines are 30-60 characters, include a number or power word, and create curiosity without resorting to spam triggers. Personalization tokens like [First Name] can boost open rates by up to 26%.</p>
       </div>
     </div>
   );

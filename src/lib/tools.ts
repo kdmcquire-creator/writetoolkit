@@ -20,5 +20,11 @@ export const tools: Tool[] = [
   { slug: 'resume-scorer', name: 'Resume Scorer', description: 'Analyze and score your resume.' },
   { slug: 'headline-analyzer', name: 'Headline Analyzer', description: 'Optimize your headlines for engagement.' },
   { slug: 'markdown-to-html', name: 'Markdown to HTML', description: 'Convert markdown text to HTML code.' },
-  { slug: 'character-counter', name: 'Character Counter', description: 'Count characters, spaces, and paragraphs in real-time.' }
+  { slug: 'character-counter', name: 'Character Counter', description: 'Count characters, spaces, and paragraphs in real-time.' },
+  { slug: 'loan-calculator', name: 'Loan Calculator', description: 'Calculate monthly payments and total interest for any loan.' },
+  { slug: 'qr-code-generator', name: 'QR Code Generator', description: 'Generate free QR codes for URLs, text, and more.' },
+  { slug: 'keyword-density-checker', name: 'Keyword Density Checker', description: 'Analyze keyword frequency and density in your content.' },
+  { slug: 'break-even-calculator', name: 'Break-Even Calculator', description: 'Calculate the break-even point for your business or product.' },
+  { slug: 'meta-tag-previewer', name: 'Meta Tag Previewer', description: 'Preview how your page title and meta description appear in Google search results.' },
+  { slug: 'email-subject-tester', name: 'Email Subject Tester', description: 'Score your email subject line for open rate potential.' }
 ];

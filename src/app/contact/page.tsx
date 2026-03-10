@@ -1,1 +1,22 @@
-import React from 'react';\n\nexport default function ContactPage() {\n  return (\n    <main className=\"max-w-4xl mx-auto px-4 py-12\">\n      <h1 className=\"text-4xl font-bold mb-8\">Contact Us</h1>\n      <div className=\"prose prose-slate max-w-none\">\n        <p className=\"text-lg mb-6\">\n          Have questions or feedback? We'd love to hear from you. \n          The best way to reach us is via email.\n        </p>\n        \n        <div className=\"bg-slate-50 p-8 rounded-lg border border-slate-200\">\n          <h2 className=\"text-xl font-semibold mb-2\">Email Support</h2>\n          <p className=\"text-slate-600 mb-4\">\n            For general inquiries, support, or partnership opportunities:\n          </p>\n          <a \n            href=\"mailto:contact@aiproductivityhub.co\" \n            className=\"text-2xl font-medium text-blue-600 hover:underline\"\n          >\n            contact@aiproductivityhub.co\n          </a>\n        </div>\n\n        <div className=\"mt-12\">\n          <h2 className=\"text-2xl font-semibold mb-4\">Response Time</h2>\n          <p>\n            We typically respond to all inquiries within 24-48 business hours. \n            Thank you for your patience and for being part of the WriteToolkit community.\n          </p>\n        </div>\n      </div>\n    </main>\n  );\n}\n
+import React from 'react';
+
+export default function ContactPage() {
+  return (
+    <main className="max-w-4xl mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-8">Contact Us</h1>
+      <div className="prose prose-slate max-w-none">
+        <p className="text-lg mb-6">
+          Have questions or suggestions? We'd love to hear from you.
+        </p>
+        <div className="bg-white shadow-sm border rounded-lg p-6">
+          <p className="mb-4">
+            <strong>Email:</strong> support@writetoolkit.com
+          </p>
+          <p>
+            We typically respond to all inquiries within 24-48 business hours.
+          </p>
+        </div>
+      </div>
+    </main>
+  );
+}

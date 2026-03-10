@@ -1,1 +1,43 @@
-'use client';\n\nimport AffiliateBanner from '@/components/AffiliateBanner';\nimport SidebarFreshbooks from '@/components/SidebarFreshbooks';\n\nexport default function ToolPage({ params }: { params: { slug: string } }) {\n  return (\n    <div className=\"max-w-7xl mx-auto px-4 py-12\">\n      <AffiliateBanner />\n      \n      <div className=\"grid grid-cols-1 lg:grid-cols-3 gap-8\">\n        <div className=\"lg:col-span-2\">\n          <h1 className=\"text-3xl font-bold mb-6 capitalize\">{params.slug.replace(/-/g, ' ')}</h1>\n          <div className=\"prose prose-invert max-w-none\">\n            <p>Tool content for {params.slug} goes here...</p>\n          </div>\n        </div>\n        \n        <aside className=\"lg:col-span-1\">\n          <SidebarFreshbooks />\n        </aside>\n      </div>\n    </div>\n  );\n}
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { tools } from '@/lib/tools'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
+interface Props {
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const tool = tools.find((t) => t.slug === params.slug)
+  if (!tool) return {}
+
+  return {
+    title: tool.title,
+    description: tool.description,
+  }
+}
+
+export default function ToolPage({ params }: Props) {
+  const tool = tools.find((t) => t.slug === params.slug)
+  if (!tool) notFound()
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-grow container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-4">{tool.name}</h1>
+        <p className="text-xl text-gray-600 mb-8">{tool.description}</p>
+        {/* Tool implementation would go here */}
+        <div className="bg-gray-100 p-8 rounded-lg text-center">
+          <p>Tool interactive component for {tool.name} coming soon.</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export async function generateStaticParams() {
+  return tools.map((tool) => ({
+    slug: tool.slug,
+  }))
+}

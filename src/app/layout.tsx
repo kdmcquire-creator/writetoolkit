@@ -32,18 +32,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang=\"en\">
       <head>
         <Script 
           async 
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5995172189982724" 
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
+          src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5995172189982724\" 
+          crossOrigin=\"anonymous\"
+          strategy=\"beforeInteractive\"
         />
       </head>
       <body className={inter.className}>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className=\"min-h-screen\">{children}</main>
         <Footer />
       </body>
     </html>
